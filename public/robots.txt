@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# AI/LLM crawlers — allowed so this portfolio can be cited by answer engines
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://hire.aldyazarya.dev/sitemap-index.xml

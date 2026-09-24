@@ -17,5 +17,9 @@ export const site = {
     { href: '#projects', label: 'Projects' },
     { href: '#contact',  label: 'Contact' },
   ],
-  socials: ['x', 'facebook', 'linkedin', 'instagram'] as const,
+  socials: [
+    { name: 'linkedin',  href: 'https://www.linkedin.com/in/aldyazarya/' },
+    { name: 'instagram', href: 'https://www.instagram.com/aldyazaryaaa/' },
+    { name: 'threads',   href: 'https://www.threads.com/@aldyazaryaaa' },
+  ],
 };
