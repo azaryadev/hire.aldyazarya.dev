@@ -2,6 +2,7 @@ export const site = {
   name: 'Aldy',
   fullName: 'Aldy Azarya',
   email: 'azarya.dev@gmail.com',
+  whatsapp: '6285183203971',
   website: 'aldyazarya.dev',
   location: 'Jakarta, Indonesia',
   stats: [
