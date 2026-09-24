@@ -1,0 +1,135 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Aldy Azarya — Portfolio',
+  description = 'Full Stack Developer & UI/UX Designer portfolio landing page.',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // mobile nav
+      const burger = document.getElementById('burger');
+      const links = document.getElementById('navlinks');
+      if (burger && links) {
+        burger.addEventListener('click', () => {
+          const open = links.classList.toggle('open');
+          burger.setAttribute('aria-expanded', String(open));
+        });
+        links.addEventListener('click', (e) => {
+          if ((e.target as HTMLElement).tagName === 'A') {
+            links.classList.remove('open');
+            burger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // scroll reveal
+      const items = document.querySelectorAll<HTMLElement>('.rv');
+      if (!reduce && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((en) => {
+              if (en.isIntersecting) {
+                en.target.classList.add('in');
+                io.unobserve(en.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -60px' }
+        );
+        items.forEach((el, i) => {
+          el.style.transitionDelay = `${Math.min(i % 4, 3) * 70}ms`;
+          io.observe(el);
+        });
+      } else {
+        items.forEach((el) => el.classList.add('in'));
+      }
+
+      // pause the marquee when motion is reduced
+      const ribbon = document.getElementById('ribbon');
+      if (reduce && ribbon) ribbon.style.animationPlayState = 'paused';
+
+      // contact form — submits to Web3Forms (see PUBLIC_WEB3FORMS_KEY in .env)
+      const form = document.getElementById('cform') as HTMLFormElement | null;
+      const note = document.getElementById('fnote');
+      const submitBtn = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+      const setNote = (text: string, isError = false) => {
+        if (!note) return;
+        note.textContent = text;
+        note.classList.toggle('is-error', isError);
+      };
+
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const d = new FormData(form);
+
+        if (!d.get('first') || !d.get('email') || !d.get('message')) {
+          setNote('Please fill in your name, email, and message.', true);
+          return;
+        }
+        if (d.get('botcheck')) return; // honeypot tripped, silently drop
+        if (!d.get('access_key')) {
+          setNote('Form is not configured yet — missing PUBLIC_WEB3FORMS_KEY.', true);
+          return;
+        }
+
+        if (submitBtn) submitBtn.disabled = true;
+        setNote('Sending…');
+
+        try {
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: d,
+          });
+          const json = await res.json();
+          if (json.success) {
+            setNote("Thanks! Your message has been sent — I'll get back to you soon.");
+            form.reset();
+          } else {
+            setNote(json.message || 'Something went wrong. Please try again.', true);
+          }
+        } catch {
+          setNote('Network error — please try again in a moment.', true);
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+---
+import { projects } from '../data/projects';
+
+const dims = (wide?: boolean) => (wide ? { w: 1200, h: 750 } : { w: 700, h: 438 });
+---
+
+<section class="sec sec-projects" id="projects">
+  <div class="wrap">
+    <div class="center rv">
+      <span class="eyebrow">What I Created</span>
+      <h2 class="h-lg">My Latest Projects</h2>
+    </div>
+
+    <div class="proj-grid">
+      {
+        projects.map((p) => {
+          const { w, h } = dims(p.wide);
+          const Tag = p.href ? 'a' : 'figure';
+          return (
+            <Tag
+              class:list={['proj', 'rv', { wide: p.wide }]}
+              href={p.href}
+              target={p.href ? '_blank' : undefined}
+              rel={p.href ? 'noopener noreferrer' : undefined}
+            >
+              <img
+                class="proj-shot"
+                src={`/assets/work/${p.slug}.webp`}
+                alt={p.title}
+                width={w}
+                height={h}
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>
+                <small>{p.tag}</small>
+                {p.title}
+              </figcaption>
+            </Tag>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

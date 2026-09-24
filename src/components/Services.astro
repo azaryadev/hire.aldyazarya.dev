@@ -1,0 +1,40 @@
+---
+import { services } from '../data/services';
+
+const icons: Record<string, string> = {
+  monitor: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 20h20"/></svg>`,
+  flow: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M12 7.4v4M12 11.4 6.6 16M12 11.4 17.4 16"/></svg>`,
+  code: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 8 5 12l3.5 4M15.5 8l3.5 4-3.5 4"/></svg>`,
+};
+---
+
+<section class="sec sec-services" id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="eyebrow">Services I Provide</span>
+        <h2 class="h-lg">Innovative solutions in<br>design and development</h2>
+      </div>
+      <div class="right">
+        <p>I work with businesses to shape their vision into meaningful digital experiences that inspire and perform. From concept to launch, I focus on products that are both beautiful and built to last.</p>
+        <a class="btn btn-primary" href="#contact">View All Services</a>
+      </div>
+    </div>
+
+    <div class="cards">
+      {
+        services.map((s) => (
+          <article class="card rv">
+            <div class="card-icon" set:html={icons[s.icon]} />
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+            <a class="link-more" href="#contact">
+              Learn More
+              <svg width="17" height="14" viewBox="0 0 17 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h14M10 2l5 5-5 5"/></svg>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

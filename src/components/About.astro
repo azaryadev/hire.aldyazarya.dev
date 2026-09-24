@@ -1,0 +1,34 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="sec" id="about">
+  <div class="wrap about-grid">
+    <div class="about-visual rv">
+      <span class="about-ring" aria-hidden="true"></span>
+      <div class="about-photo"><img src="assets/about.png" alt="Portrait of Aldy Azarya" width="720" height="720" loading="lazy"></div>
+      <span class="chip chip-1">App design</span>
+      <span class="chip chip-2">User Experience</span>
+      <span class="chip chip-3">Web design</span>
+      <span class="chip chip-4">Custom Development</span>
+    </div>
+
+    <div class="rv">
+      <span class="eyebrow">About Me</span>
+      <h2 class="h-lg">Who is {site.fullName}?</h2>
+      <p class="about-quote">"Turning product ideas into interfaces people actually enjoy using."</p>
+      <p class="muted">I'm a full stack developer dedicated to transforming ideas into visually compelling and user-focused experiences. I care about the details most people never notice: loading states that feel calm, forms that forgive mistakes, and layouts that hold up on a cheap Android phone.</p>
+
+      <div class="contact-inline">
+        <div class="ci">
+          <span class="ci-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <div><small>Email Me At</small><strong>{site.email}</strong></div>
+        </div>
+        <div class="ci">
+          <span class="ci-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3.3 9h17.4M3.3 15h17.4"/></svg></span>
+          <div><small>Website</small><strong>{site.website}</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

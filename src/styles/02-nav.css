@@ -1,0 +1,26 @@
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:60;
+  backdrop-filter:blur(14px);
+  background:linear-gradient(180deg,rgba(20,13,7,.86),rgba(20,13,7,.38));
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.nav-in{display:flex;align-items:center;gap:26px;height:76px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-h);font-weight:700;font-size:1.12rem;color:#fff}
+.brand-mark{
+  width:38px;height:38px;border-radius:12px;flex:none;
+  background:linear-gradient(140deg,var(--primary-bright),#C9671C);
+  display:grid;place-items:center;color:#180D04;font-weight:800;font-size:.95rem;
+}
+.nav-links{display:flex;gap:26px;margin-inline:auto;font-size:.95rem;font-weight:500;color:var(--ink-2)}
+.nav-links a{position:relative;padding:4px 0;transition:color var(--d-micro) var(--ease)}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--primary);
+  transition:right var(--d-normal) var(--ease);border-radius:2px;
+}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{right:0}
+.nav-cta{flex:none}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:12px;padding:9px 11px;cursor:pointer}
+.burger span{display:block;width:18px;height:2px;background:var(--primary-soft);border-radius:2px}
+.burger span+span{margin-top:4px}

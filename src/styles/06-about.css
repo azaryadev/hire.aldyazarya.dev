@@ -1,0 +1,33 @@
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(36px,6vw,72px);align-items:center}
+.about-visual{position:relative;aspect-ratio:1;max-width:480px;margin-inline:auto;width:100%}
+.about-ring{
+  position:absolute;inset:6%;border:3px solid var(--primary);border-radius:50%;
+}
+.about-photo{
+  position:absolute;inset:14%;border-radius:50%;overflow:hidden;
+  background:linear-gradient(180deg,#2A1B0D,#140D07);
+}
+.about-photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.chip{
+  position:absolute;z-index:3;
+  background:var(--ribbon);color:#180D04;
+  padding:9px 18px;border-radius:var(--r-full);
+  font-family:var(--font-h);font-weight:600;font-size:.86rem;
+  box-shadow:var(--shadow-med);white-space:nowrap;
+}
+.chip-1{left:-4%;top:16%}
+.chip-2{left:-9%;top:32%}
+.chip-3{right:-6%;bottom:26%}
+.chip-4{right:-2%;bottom:8%}
+
+.about-quote{
+  font-family:var(--font-h);font-weight:600;color:#fff;font-size:1.02rem;
+  margin:16px 0 18px;line-height:1.5;
+}
+.about-grid h2{margin-bottom:6px}
+.contact-inline{display:flex;gap:40px;flex-wrap:wrap;margin-top:30px}
+.ci{display:flex;align-items:center;gap:13px}
+.ci-ic{width:38px;height:38px;flex:none;display:grid;place-items:center;color:var(--primary)}
+.ci small{display:block;color:var(--ink-3);font-size:.82rem;line-height:1.3}
+.ci strong{font-family:var(--font-h);color:#fff;font-size:.98rem;font-weight:600}

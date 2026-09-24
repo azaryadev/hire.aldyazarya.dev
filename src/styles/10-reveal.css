@@ -1,0 +1,3 @@
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity var(--d-macro) var(--ease),transform var(--d-macro) var(--ease)}
+.rv.in{opacity:1;transform:none}

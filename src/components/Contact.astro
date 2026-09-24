@@ -1,0 +1,42 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="sec sec-contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="rv">
+      <span class="eyebrow">Contact Me</span>
+      <h2 class="h-lg">Get in touch to discuss<br>your next project!</h2>
+      <p class="muted" style="margin-top:18px">Ready to take your project to the next level? Whether you need a new website, a web application, or just a second opinion on your build, I'm happy to talk.</p>
+
+      <div class="contact-inline">
+        <div class="ci">
+          <span class="ci-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <div><small>Email Me At</small><strong>{site.email}</strong></div>
+        </div>
+        <div class="ci">
+          <span class="ci-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 21.5c4.2-4.6 6.3-8.1 6.3-11a6.3 6.3 0 1 0-12.6 0c0 2.9 2.1 6.4 6.3 11Z"/><circle cx="12" cy="10.2" r="2.5"/></svg></span>
+          <div><small>Based In</small><strong>{site.location}</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <form class="form-card rv" id="cform" novalidate>
+      <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
+      <input type="hidden" name="subject" value="New message from hire.aldyazarya.dev" />
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+      <p>Fill out the form below and I'll get back to you soon to discuss your project or answer any questions.</p>
+      <div class="f-row">
+        <input type="text" name="first" placeholder="First Name" required>
+        <input type="text" name="last" placeholder="Last Name">
+      </div>
+      <div class="f-row">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Phone Number">
+      </div>
+      <textarea name="message" placeholder="Message" required></textarea>
+      <button class="btn btn-primary" type="submit">Submit Message</button>
+      <p class="form-note" id="fnote" role="status"></p>
+    </form>
+  </div>
+</section>

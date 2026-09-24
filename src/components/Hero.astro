@@ -1,0 +1,53 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 class="h-xl">
+        I'm Aldy, a
+        <span class="accent">Full Stack Developer</span>
+        &amp; UI/UX Designer
+      </h1>
+      <p class="lead">From intuitive interface design to powerful full-stack development and production-grade builds, I craft user-centered digital products that engage, perform, and ship on time.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#services">Get Started</a>
+        <a class="btn btn-ghost" href="#contact">Book a Call</a>
+      </div>
+    </div>
+
+    <div class="portrait">
+      <svg class="spark" viewBox="0 0 60 50" fill="none" aria-hidden="true">
+        <path d="M4 8c6 8 14 16 24 20M14 4c6 8 14 16 24 20M2 24c6 6 12 11 20 14" stroke="#F7B979" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+      <span class="ring-dot" aria-hidden="true"></span>
+
+      {
+        site.stats.map((st, i) => (
+          <div class:list={['stat', i === 0 ? 'stat-a' : 'stat-b']}>
+            <b>{st.value}</b>
+            <span>
+              {st.lines.map((line, n) => (<>{n > 0 && <br />}{line}</>))}
+            </span>
+          </div>
+        ))
+      }
+
+      <figure class="portrait-figure">
+        <img src="assets/hero.png" alt="Aldy Azarya, full stack developer and UI/UX designer" width="900" height="1200" fetchpriority="high">
+      </figure>
+    </div>
+  </div>
+
+  <div class="ribbon">
+    <div class="ribbon-track" id="ribbon">
+      <ul>
+        {site.ribbon.map((w) => <li>{w}</li>)}
+      </ul>
+      <ul aria-hidden="true">
+        {site.ribbon.map((w) => <li>{w}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>

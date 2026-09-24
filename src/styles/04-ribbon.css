@@ -1,0 +1,12 @@
+/* ---------- ribbon ---------- */
+.ribbon{
+  position:relative;z-index:4;
+  background:var(--ribbon);color:#1A0E04;
+  overflow:hidden;padding:13px 0;
+  font-family:var(--font-h);font-weight:600;font-size:.84rem;letter-spacing:.14em;text-transform:uppercase;
+}
+.ribbon-track{display:flex;width:max-content;animation:marquee 26s linear infinite}
+.ribbon-track ul{display:flex;align-items:center;gap:34px;margin:0;padding:0 17px;list-style:none}
+.ribbon-track li{display:flex;align-items:center;gap:34px;white-space:nowrap}
+.ribbon-track li::after{content:"✦";font-size:.9rem;opacity:.85}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}

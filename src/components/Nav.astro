@@ -1,0 +1,14 @@
+---
+import { site } from '../data/site';
+---
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="brand-mark">&lt;/&gt;</span> {site.name}</a>
+    <nav class="nav-links" id="navlinks">
+      {site.nav.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+    <a class="btn btn-primary nav-cta" href="#contact">Book a Call</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>

@@ -1,0 +1,15 @@
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--font-h);font-weight:600;font-size:.97rem;
+  padding:14px 28px;border-radius:var(--r-full);border:1px solid transparent;
+  cursor:pointer;transition:transform var(--d-micro) var(--ease),box-shadow var(--d-normal) var(--ease),background var(--d-normal) var(--ease);
+  will-change:transform;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--primary-bright),#DA7222);
+  color:#160C03;box-shadow:var(--shadow-glow);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 42px rgba(232,130,46,.45)}
+.btn-ghost{border-color:var(--primary);color:var(--primary-soft);background:rgba(232,130,46,.06)}
+.btn-ghost:hover{background:rgba(232,130,46,.15);transform:translateY(-2px)}
