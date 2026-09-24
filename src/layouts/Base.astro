@@ -5,11 +5,13 @@ import { site } from '../data/site';
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
 }
 
 const {
   title = 'Aldy Azarya — Full Stack Developer & UI/UX Designer',
   description = 'Aldy Azarya is a full stack developer and UI/UX designer with 6+ years of experience building custom websites, web apps, and production-grade products for clients worldwide.',
+  keywords = 'Aldy Azarya,Aldy, full stack developer, UI/UX designer, web developer Jakarta, website design, web application development, custom web development, front-end developer, back-end developer, freelance developer Indonesia',
 } = Astro.props;
 
 const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
@@ -50,6 +52,7 @@ const websiteJsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <meta name="author" content={site.fullName} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
