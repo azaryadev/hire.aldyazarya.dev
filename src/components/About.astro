@@ -1,12 +1,24 @@
 ---
+import { Image } from 'astro:assets';
 import { site } from '../data/site';
+import aboutImg from '../assets/images/about.png';
 ---
 
 <section class="sec" id="about">
   <div class="wrap about-grid">
     <div class="about-visual rv">
       <span class="about-ring" aria-hidden="true"></span>
-      <div class="about-photo"><img src="assets/about.png" alt="Portrait of Aldy Azarya" width="720" height="720" loading="lazy"></div>
+      <div class="about-photo">
+        <Image
+          src={aboutImg}
+          alt="Portrait of Aldy Azarya"
+          widths={[271, 400, 542]}
+          sizes="(min-width: 981px) 271px, 40vw"
+          format="webp"
+          quality={82}
+          loading="lazy"
+        />
+      </div>
       <span class="chip chip-1">App design</span>
       <span class="chip chip-2">User Experience</span>
       <span class="chip chip-3">Web design</span>

@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { site } from '../data/site';
+import heroImg from '../assets/images/hero.png';
 ---
 
 <section class="hero">
@@ -35,7 +37,16 @@ import { site } from '../data/site';
       }
 
       <figure class="portrait-figure">
-        <img src="assets/hero.png" alt="Aldy Azarya, full stack developer and UI/UX designer" width="900" height="1200" fetchpriority="high">
+        <Image
+          src={heroImg}
+          alt="Aldy Azarya, full stack developer and UI/UX designer"
+          widths={[376, 550, 752]}
+          sizes="(min-width: 981px) 42vw, 90vw"
+          format="webp"
+          quality={82}
+          fetchpriority="high"
+          loading="eager"
+        />
       </figure>
     </div>
   </div>
