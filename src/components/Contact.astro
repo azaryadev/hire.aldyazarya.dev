@@ -24,6 +24,11 @@ import { site } from '../data/site';
     <form class="form-card rv" id="cform" novalidate>
       <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
       <input type="hidden" name="subject" value="New message from hire.aldyazarya.dev" />
+      <input type="hidden" name="utm_source" id="utm_source">
+      <input type="hidden" name="utm_medium" id="utm_medium">
+      <input type="hidden" name="utm_campaign" id="utm_campaign">
+      <input type="hidden" name="utm_content" id="utm_content">
+      <input type="hidden" name="landing_page" id="landing_page">
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
       <p>Fill out the form below and I'll get back to you soon to discuss your project or answer any questions.</p>
       <div class="f-row">

@@ -104,6 +104,34 @@ const websiteJsonLd = {
     <script>
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+      // UTM capture — first-touch attribution, persisted for the browser session
+      const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const;
+      const params = new URLSearchParams(window.location.search);
+      const hasUtm = UTM_KEYS.some((k) => params.has(k));
+
+      if (hasUtm) {
+        const data: Record<string, string> = {};
+        UTM_KEYS.forEach((k) => {
+          const v = params.get(k);
+          if (v) data[k] = v;
+        });
+        data.landing_page = window.location.pathname + window.location.search;
+        sessionStorage.setItem('utm_attribution', JSON.stringify(data));
+      }
+
+      try {
+        const stored = sessionStorage.getItem('utm_attribution');
+        if (stored) {
+          const data = JSON.parse(stored);
+          Object.entries(data).forEach(([key, value]) => {
+            const el = document.getElementById(key) as HTMLInputElement | null;
+            if (el) el.value = String(value);
+          });
+        }
+      } catch {
+        // sessionStorage unavailable (e.g. privacy mode) — skip silently
+      }
+
       // mobile nav
       const burger = document.getElementById('burger');
       const links = document.getElementById('navlinks');
